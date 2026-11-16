@@ -1,0 +1,52 @@
+{
+  "task": "addition",
+  "method": "fixed20",
+  "model": {
+    "n_dims": 6,
+    "n_positions": 4096,
+    "n_embd": 256,
+    "n_layer": 3,
+    "n_head": 8,
+    "linear_embedding": true
+  },
+  "data": {
+    "min_length": 1,
+    "max_length": 19,
+    "sampling": "uniform"
+  },
+  "training": {
+    "steps": 50001,
+    "batch_size": 64,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "decay_start_step": 32000,
+    "log_every": 100,
+    "checkpoint_every": 1000
+  },
+  "seeds": {
+    "model_init": 1,
+    "data": 1,
+    "runtime": 1,
+    "eval": 42
+  },
+  "evaluation": {
+    "lengths": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60
+    ],
+    "examples_per_length": 6400,
+    "batch_size": 64,
+    "oracle_horizon": "min20_n_plus_2",
+    "policy_max_depth": 30
+  }
+}
